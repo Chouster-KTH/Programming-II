@@ -7,12 +7,10 @@ defmodule Day1 do
   def partOne() do partOne(input(), 0) end
   def partOne(list, numberOfIncreases) do
     [n1 | tail] = list
-
     if tail == [] do
       numberOfIncreases
     else
       [n2 | tail_2] = tail
-
       if n2 > n1 do
         partOne(tail, numberOfIncreases + 1)
       else
@@ -26,7 +24,6 @@ defmodule Day1 do
     [n1 | tail] = list
     [n2 | tail_2] = tail
     [n3 | tail_3] = tail_2
-
     if tail_3 == [] do
       numberOfIncreases
     else
