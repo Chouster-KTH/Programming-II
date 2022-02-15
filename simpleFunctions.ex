@@ -17,7 +17,7 @@ defmodule Test do
 
 # Compute the area of a square
   def areaOfSquare(side) do
-  areaOfRec(side, side)   
+  side * side   
   end
 
 # Compute the area of a circle
