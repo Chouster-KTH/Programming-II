@@ -1,12 +1,12 @@
 defmodule Lists do
 
-  def take([], _) do [] end #new
+  def take([], _) do [] end 
   def take([head | _], 1) do [head] end
-  def take(_, 0) do [] end #new
+  def take(_, 0) do [] end 
   def take([head | tail] = list, n) do [head | take(tail, n - 1)] end
 
-  def drop([], _) do [] end #new
-  def drop(list, 0) do list end #new
+  def drop([], _) do [] end 
+  def drop(list, 0) do list end 
   def drop([_ | tail], 1) do tail end
   def drop([_ | tail], n) do drop(tail, n - 1) end
 
