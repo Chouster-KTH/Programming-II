@@ -31,7 +31,8 @@ defmodule Moves do
         Lists.append(stateHistory, [currentState])
       end
     end
-
+    
+    # Test run
     def runMove() do move([{:one,1},{:two,1},{:one,-1}], {[:a,:b],[],[]}) end
 
   end
