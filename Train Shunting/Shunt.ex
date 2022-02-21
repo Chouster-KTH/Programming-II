@@ -73,7 +73,6 @@ end
     def runCompress() do compress([{:two,-1},{:one,1},{:one,-1},{:two,1}]) end
     #def runCompress() do compress([{:one,0},{:two,2},{:two,1},{:one,1},{:two,0},{:two,-1},{:two,1},{:one,-1},{:two,0}]) end
     def runRules() do rules([{:one,-1},{:one,1},{:two,0},{:two,-1},{:two,-1},{:two,-1},{:one,3}]) end
-    #def runRules() do rules([{:one,-3},{:one,1},{:two,1},{:two,-2},{:two,0},{:two,-1},{:one,0}]) end
     #def runFind() do find([:c,:a,:b], [:c,:b,:a]) end
     def runFind() do find([:a,:b], [:b,:a]) end
     #def runFew() do few([:c,:a,:b], [:c,:b,:a]) end
