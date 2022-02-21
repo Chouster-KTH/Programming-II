@@ -43,6 +43,7 @@ def compress(ms) do
   end
 end
 
+def rules([]) do [] end
 def rules([{trackNumber1, 0} | tail] = ms) do
   if tail != [] do
   rules(tail)
@@ -51,7 +52,6 @@ def rules([{trackNumber1, 0} | tail] = ms) do
   end
 end
 
-def rules([]) do [] end
 def rules([{trackNumber1, n1} = head | tail] = ms) do
   if tail != [] do
     [{trackNumber2, n2} | tail_2] = tail
