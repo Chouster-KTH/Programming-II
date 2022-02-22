@@ -16,7 +16,7 @@ defmodule Shunt do
   end
 end
 
-def getMoves(xs, [y | ty] = xy, listOfMoves, instruction) do
+def getMoves(xs, [y | ty] = xy, listOfMoves, fun) do
     {hs, ts} = split(xs, y) # 1. Split xs into hs and ts
     step2 = Moves.single(instruction = {:one, 1 + length(ts)}, {xs,[],[]}) # 2. Move y and ts to track one
     listOfMoves = Lists.append(listOfMoves, [instruction])
@@ -28,7 +28,7 @@ def getMoves(xs, [y | ty] = xy, listOfMoves, instruction) do
     listOfMoves = Lists.append(listOfMoves, [instruction])
     [_ | next_xs] = elem(step5, 0)
     [_ | next_xy] = xy
-     case instruction do
+     case fun do
        :find -> find(next_xs, next_xy, listOfMoves)
        :few -> few(next_xs, next_xy, listOfMoves)
       end
