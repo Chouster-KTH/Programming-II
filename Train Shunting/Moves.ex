@@ -3,7 +3,7 @@ defmodule Moves do
   def single({_, 0}, currentState) do currentState end # return current state if no wagons are moved
   def single({trackNumber, n}, currentState = {main, one, two}) when n > 0 do
     wagonsToBeMoved = Lists.drop(main, length(main) - n) # get the n rightmost elements of the main track
-    case trackNumber do # move elements
+    case trackNumber do 
      :one ->
       currentState = {main = Lists.take(main, length(main) - n), one = Lists.append(one, wagonsToBeMoved), two}
       :two ->
@@ -22,11 +22,11 @@ defmodule Moves do
       end
     end
 
-    def move([], currentState) do [currentState] end # state remains unchanged if no moves are to be made
+    def move([], currentState) do [currentState] end 
     def move(listOfMoves, currentState) do move(listOfMoves, currentState, stateHistory = [currentState]) end
     def move([nextInstruction | tail] = listOfMoves, currentState, stateHistory)
     do currentState = single(nextInstruction, currentState) # implement next instruction
-      if tail != [] do move(tail, currentState, stateHistory = Lists.append(stateHistory, [currentState])) # check base case and save most recent instruction
+      if tail != [] do move(tail, currentState, stateHistory = Lists.append(stateHistory, [currentState])) 
       else Lists.append(stateHistory, [currentState]) end
     end
 
