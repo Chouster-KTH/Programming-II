@@ -1,6 +1,6 @@
 defmodule Moves do
 
-  def single({_, 0}, currentState) do currentState end # return current state if no wagons are moved
+  def single({_, 0}, currentState) do currentState end 
   def single({trackNumber, n}, currentState = {main, one, two}) when n > 0 do
     wagonsToBeMoved = Lists.drop(main, length(main) - n) # get the n rightmost elements of the main track
     case trackNumber do 
