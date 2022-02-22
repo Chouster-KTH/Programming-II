@@ -2,12 +2,12 @@ defmodule Moves do
 
   def single({_, 0}, currentState) do currentState end # return current state if no wagons are moved
   def single({trackNumber, n}, currentState = {main, one, two}) when n > 0 do
-    wagonsToBeMoved = Lists.drop(main, Enum.count(main) - n) # get the n rightmost elements of the main track
+    wagonsToBeMoved = Lists.drop(main, length(main) - n) # get the n rightmost elements of the main track
     case trackNumber do # move elements
-      :one ->
-      currentState = {main = Lists.take(main, Enum.count(main) - n), one = Lists.append(one, wagonsToBeMoved), two}
+     :one ->
+      currentState = {main = Lists.take(main, length(main) - n), one = Lists.append(one, wagonsToBeMoved), two}
       :two ->
-      currentState = {main = Lists.take(main, Enum.count(main) - n), one, two = Lists.append(two, wagonsToBeMoved)}
+      currentState = {main = Lists.take(main, length(main) - n), one, two = Lists.append(two, wagonsToBeMoved)}
     end
   end
 
