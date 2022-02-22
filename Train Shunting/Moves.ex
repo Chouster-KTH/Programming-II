@@ -21,14 +21,18 @@ defmodule Moves do
       currentState = {main = Lists.append(main, wagonsToBeMoved), one, two = Lists.drop(two, -n)}
       end
     end
+    
+    def move([], currentState) do [currentState] end
+    def move([head | tail], currentState) do [currentState | move(tail, single(head, currentState))] end
 
-    def move([], currentState) do [currentState] end 
-    def move(listOfMoves, currentState) do move(listOfMoves, currentState, stateHistory = [currentState]) end
-    def move([nextInstruction | tail] = listOfMoves, currentState, stateHistory)
-    do currentState = single(nextInstruction, currentState) 
-      if tail != [] do move(tail, currentState, stateHistory = Lists.append(stateHistory, [currentState])) 
-      else Lists.append(stateHistory, [currentState]) end
-    end
+    # Inefficient
+    # def move([], currentState) do [currentState] end 
+    # def move(listOfMoves, currentState) do move(listOfMoves, currentState, stateHistory = [currentState]) end
+    # def move([nextInstruction | tail] = listOfMoves, currentState, stateHistory)
+    # do currentState = single(nextInstruction, currentState) 
+    #  if tail != [] do move(tail, currentState, stateHistory = Lists.append(stateHistory, [currentState])) 
+    #  else Lists.append(stateHistory, [currentState]) end
+    # end
 
     # Test run
     def runMove() do move([{:one,1},{:two,1},{:one,-1}], {[:a,:b],[],[]}) end
