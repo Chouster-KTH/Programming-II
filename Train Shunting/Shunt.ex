@@ -18,13 +18,13 @@ end
 
 def getMoves(xs, [y | ty] = xy, listOfMoves, instruction) do
     {hs, ts} = split(xs, y) # 1. Split xs into hs and ts
-    step2 = Moves.single(instruction = {:one, 1 + Enum.count(ts)}, {xs,[],[]}) # 2. Move y and ts to track one
+    step2 = Moves.single(instruction = {:one, 1 + length(ts)}, {xs,[],[]}) # 2. Move y and ts to track one
     listOfMoves = Lists.append(listOfMoves, [instruction])
-    step3 = Moves.single(instruction = {:two, Enum.count(hs)}, step2) # 3. Move hs to track two
+    step3 = Moves.single(instruction = {:two, length(hs)}, step2) # 3. Move hs to track two
     listOfMoves = Lists.append(listOfMoves, [instruction])
-    step4 = Moves.single(instruction = {:one, -(1 + Enum.count(ts))}, step3) # 4. Move from one to main
+    step4 = Moves.single(instruction = {:one, -(1 + length(ts))}, step3) # 4. Move from one to main
     listOfMoves = Lists.append(listOfMoves, [instruction])
-    step5 = Moves.single(instruction = {:two, -(Enum.count(hs))}, step4) # 5. Move from two to main
+    step5 = Moves.single(instruction = {:two, -(length(hs))}, step4) # 5. Move from two to main
     listOfMoves = Lists.append(listOfMoves, [instruction])
     [_ | next_xs] = elem(step5, 0)
     [_ | next_xy] = xy
