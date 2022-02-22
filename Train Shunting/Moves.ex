@@ -25,7 +25,7 @@ defmodule Moves do
     def move([], currentState) do [currentState] end 
     def move(listOfMoves, currentState) do move(listOfMoves, currentState, stateHistory = [currentState]) end
     def move([nextInstruction | tail] = listOfMoves, currentState, stateHistory)
-    do currentState = single(nextInstruction, currentState) # implement next instruction
+    do currentState = single(nextInstruction, currentState) 
       if tail != [] do move(tail, currentState, stateHistory = Lists.append(stateHistory, [currentState])) 
       else Lists.append(stateHistory, [currentState]) end
     end
